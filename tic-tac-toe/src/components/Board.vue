@@ -7,6 +7,7 @@
 </header>
 
 <h1 v-else >Next Up: {{ playerValue }}</h1>
+<span ref="boardRef" class="confetti-origin"></span>
 <div class='board'>
   <span class="vertical-line-1"></span>
   <span class="vertical-line-2"></span>
@@ -25,6 +26,7 @@
 import { ref } from 'vue'
 import Square from './Square.vue'
 import { computed } from 'vue';
+import { confetti } from '../../node_modules/dom-confetti/src/main.js';
 
 export default {
   name: 'Board',
@@ -33,6 +35,7 @@ export default {
     },
 
     setup() {
+      const boardRef = ref(null);
       const board = ref(Array(9).fill(null));
       const playerValue = ref('X');
 
@@ -67,6 +70,7 @@ export default {
                 board.value[a] === board.value[b] &&
                 board.value[a] === board.value[c]
             ) {
+                confetti(boardRef.value)
                 return `${board.value[a]} Wins!`;
             }
         }
@@ -79,6 +83,7 @@ export default {
 
       return {
         board,
+        boardRef,
         playerValue,
         markSquare,
         calculateWinner,
