@@ -3,6 +3,7 @@
 <h1>
   {{ calculateWinner }}
 </h1>
+  <button class='reset' @click='reset'>Play Again</button>
 </header>
 
 <h1 v-else >Next Up: {{ playerValue }}</h1>
@@ -42,6 +43,11 @@ export default {
         playerValue.value === 'X' ? (playerValue.value = 'O') : (playerValue.value = 'X');
       };
 
+    const reset = () => {
+        board.value = Array(9).fill(null);
+        playerValue.value = 'X';
+    };      
+
     const calculateWinner = computed(() => {
         const lines = [
             [0, 1, 2],
@@ -76,6 +82,7 @@ export default {
         playerValue,
         markSquare,
         calculateWinner,
+        reset
      }      
 
     },
