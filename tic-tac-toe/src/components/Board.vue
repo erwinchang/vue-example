@@ -22,76 +22,36 @@
 </div>
 </template>
 
-<script>
-import { ref } from 'vue'
+<script lang="ts">
 import Square from './Square.vue'
-import { computed } from 'vue';
-import { confetti } from '../../node_modules/dom-confetti/src/main.js';
+import { defineComponent, ref } from 'vue';
 
-export default {
-  name: 'Board',
+import { useBoard } from '../composables/useBoard';
+import { useCalculateWinner } from '../composables/useCalculateWinner';
+
+export default defineComponent({
+    name: 'Board',
+    
     components: {
         Square,
     },
 
     setup() {
-      const boardRef = ref(null);
-      const board = ref(Array(9).fill(null));
-      const playerValue = ref('X');
+        const boardRef: object = ref(null);
+        const { board, playerValue, markSquare, reset } = useBoard();   
+        const { calculateWinner } = useCalculateWinner(board, boardRef);
 
-      const markSquare = (i) => {
-        const boardCopy = board.value.slice();
-        boardCopy[i] = playerValue.value;
-        board.value = boardCopy;
-        playerValue.value === 'X' ? (playerValue.value = 'O') : (playerValue.value = 'X');
-      };
-
-    const reset = () => {
-        board.value = Array(9).fill(null);
-        playerValue.value = 'X';
-    };      
-
-    const calculateWinner = computed(() => {
-        const lines = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [0, 4, 8],
-            [2, 4, 6],
-        ];
-
-        for (let i = 0; i < lines.length; i++) {
-            const [a, b, c] = lines[i];
-            if (
-                board.value[a] &&
-                board.value[a] === board.value[b] &&
-                board.value[a] === board.value[c]
-            ) {
-                confetti(boardRef.value)
-                return `${board.value[a]} Wins!`;
-            }
-        }
-        // if board is full, end game in tie.
-        if (board.value.every((val) => val)) return 'Tie!';
-
-        return null;
-    });
-
-
-      return {
-        board,
-        boardRef,
-        playerValue,
-        markSquare,
-        calculateWinner,
-        reset
-     }      
+        return {
+            board,
+            playerValue,
+            markSquare,
+            calculateWinner,
+            boardRef,
+            reset,
+        };      
 
     },
-}
+});
 </script>
 
 <style scoped>
