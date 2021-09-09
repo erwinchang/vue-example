@@ -12,9 +12,12 @@
     />
   </section>
   <h2>{{ status }}</h2>
+  <button @click="shuffleCards">Shuffle 'em</button>
+  <button @click="restartGame">Restart Game</button>
 </template>
 
 <script>
+import _ from "lodash";
 import Card from "./components/Card.vue";
 import { computed, ref, watch } from "vue";
 
@@ -26,6 +29,7 @@ export default {
   setup() {
     const cardList = ref([]);
     const userSelection = ref([]);
+
     const status = computed(() => {
       if (remainingPairs.value === 0) {
         return "You won!";
@@ -40,6 +44,18 @@ export default {
       ).length;
       return remainingCards / 2;
     });
+
+    const shuffleCards = () => {
+      cardList.value = _.shuffle(cardList.value);
+    };
+
+    const restartGame = () => {
+      shuffleCards();
+
+      cardList.value = cardList.value.map((card, index) => {
+          return { ...card, matched: false, position: index, visible: false};
+      });
+    };
 
     for(let i = 0; i < 16; i++) {
       cardList.value.push({
@@ -74,13 +90,11 @@ export default {
 
             cardList.value[cardOne.position].matched = true;
             cardList.value[cardTwo.position].matched = true;
-            console.log("Matched");
           } else {
             status.value = "No match";
 
             cardList.value[cardOne.position].visible = false;
             cardList.value[cardTwo.position].visible = false;
-            console.log("No match");
           }
           userSelection.value.length = 0;
         }
@@ -94,6 +108,8 @@ export default {
       flipCard,
       userSelection,
       status,
+      shuffleCards,
+      restartGame,
     };
   },
 };
