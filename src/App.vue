@@ -86,15 +86,14 @@ export default {
 
           //check if cards match
           if( cardOne.faceValue === cardTwo.faceValue){
-            status.value = "Matched";
 
             cardList.value[cardOne.position].matched = true;
             cardList.value[cardTwo.position].matched = true;
           } else {
-            status.value = "No match";
-
-            cardList.value[cardOne.position].visible = false;
-            cardList.value[cardTwo.position].visible = false;
+            setTimeout(() => {
+              cardList.value[cardOne.position].visible = false;
+              cardList.value[cardTwo.position].visible = false;
+            }, 1000);
           }
           userSelection.value.length = 0;
         }
