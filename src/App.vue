@@ -1,5 +1,5 @@
 <template>
-  <h1>Peek a Vue</h1>
+  <h1>Flip a Card</h1>
   <section class="game-board">
     <Card
       v-for="card in cardList"
@@ -12,8 +12,8 @@
     />
   </section>
   <h2>{{ status }}</h2>
-  <button @click="shuffleCards">Shuffle 'em</button>
-  <button @click="restartGame">Restart Game</button>
+  <button v-if="newPlayer" @click="startGame" class="button">Start Game</button>
+  <button v-else @click="restartGame" class="button">Restart Game</button>
 </template>
 
 <script>
@@ -26,9 +26,18 @@ export default {
   components: {
     Card,
   },
+  mounted() {
+    this.restartGame();
+  },
   setup() {
     const cardList = ref([]);
     const userSelection = ref([]);
+    const newPlayer = ref(true);
+
+    const startGame = () => {
+      newPlayer.value = false;
+      restartGame();
+    };
 
     const status = computed(() => {
       if (remainingPairs.value === 0) {
@@ -45,12 +54,8 @@ export default {
       return remainingCards / 2;
     });
 
-    const shuffleCards = () => {
-      cardList.value = _.shuffle(cardList.value);
-    };
-
     const restartGame = () => {
-      shuffleCards();
+      cardList.value = _.shuffle(cardList.value);
 
       cardList.value = cardList.value.map((card, index) => {
           return { ...card, matched: false, position: index, visible: false};
@@ -139,8 +144,9 @@ export default {
       flipCard,
       userSelection,
       status,
-      shuffleCards,
       restartGame,
+      newPlayer,
+      startGame
     };
   },
 };
