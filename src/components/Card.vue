@@ -16,7 +16,7 @@ export default {
             required: true,
         },
         value: {
-            type: Number,
+            type: String,
             required: true,
         },
         visible: {

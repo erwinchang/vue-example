@@ -2,8 +2,8 @@
   <h1>Peek a Vue</h1>
   <section class="game-board">
     <Card
-      v-for="(card, index) in cardList"
-      :key="`card-${index}`"
+      v-for="card in cardList"
+      :key="`${card.value}-${card.variant}`"
       :value="card.value"
       :visible="card.visible"
       :position="card.position"
@@ -57,11 +57,21 @@ export default {
       });
     };
 
-    const cardItems = [1, 2, 3, 4, 5, 6, 7, 8];
+    const cardItems = [
+      "andre3000",
+      "lilwayne",
+      "snoop",
+      "tupac",
+      "kanyewest",
+      "eminem",
+      "pharrell",
+      "chance",
+    ];
 
     cardItems.forEach((item) => {
       cardList.value.push({
           value: item,
+          variant: 2,
           visible: false,
           position: null,
           matched: false,
@@ -80,15 +90,6 @@ export default {
         position: index,
       };
     });
-
-    //for(let i = 0; i < 16; i++) {
-    //  cardList.value.push({
-    //    value: i,
-    //    visible: false,
-    //    position: i,
-    //    matched: false,
-    //  });
-    //}
 
     const flipCard = (payload) => {
       cardList.value[payload.position].visible = true;
