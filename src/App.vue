@@ -1,6 +1,6 @@
 <template>
   <h1>Flip a Card</h1>
-  <section class="game-board">
+  <transition-group tag="section" class="game-board">
     <Card
       v-for="card in cardList"
       :key="`${card.value}-${card.variant}`"
@@ -10,7 +10,7 @@
       :matched="card.matched"
       @select-card="flipCard"
     />
-  </section>
+  </transition-group>
   <h2>{{ status }}</h2>
   <button v-if="newPlayer" @click="startGame" class="button">Start Game</button>
   <button v-else @click="restartGame" class="button">Restart Game</button>
