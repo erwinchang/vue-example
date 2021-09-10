@@ -72,8 +72,7 @@ export default {
   align-items: center;
   backface-visibility: hidden;
 
-  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
-    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: var(--shadow);
 }
 
 .card.is-flipped {
@@ -81,7 +80,7 @@ export default {
 }
 
 .card-face.is-front {
-  background: #fcf6b5;
+  background: var(--front);
   color: white;
   transform: rotateY(180deg);
 }
@@ -93,11 +92,6 @@ img {
 
 .card-face.is-back {
   background: grey;
-  color: white;
-}
-.checkmark {
-  position: absolute;
-  right: 0.3em;
-  bottom: 0.2em;
+  color: var(--light);
 }
 </style>

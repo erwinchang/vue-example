@@ -28,10 +28,10 @@ export default {
 
 <style scoped>
 .button {
-  background: #212529;
+  background: var(--dark);
   border: none;
   border-radius: 1em;
-  color: #fff;
+  color: var(--light);
   padding: 1em 2em;
 }
 </style>
