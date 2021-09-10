@@ -34,8 +34,6 @@ export default {
         const flippedStyles = computed(() => {
             if (props.visible) {
                 return "is-flipped";
-            } else {
-                return "console";
             }
         });
 

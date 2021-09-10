@@ -153,13 +153,24 @@ export default {
 </script>
 
 <style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background: #fdf4ff;
+  padding-top: 3em;
+  color: #212529;
+  height: 100vh;
+}
+
+h1 {
+  margin-top: 0;
 }
 
 .game-board {
@@ -174,5 +185,8 @@ export default {
   background: #212529;
   color: #fff;
   padding: 1em 2em;
+}
+.shuffle-card-move {
+  transition: transform 0.8s ease-in;
 }
 </style>
