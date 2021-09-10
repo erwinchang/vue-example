@@ -1,8 +1,8 @@
 <template>
   <Header />
-  <Gameboard :cardList="cardList" :status="status" @flip-card="flipCard" />
+  <Gameboard :cardList="cardList" @flip-card="flipCard" />
   <Button :newPlayer="newPlayer" @start-new-game="startNewGame" />
-  <Footer />
+  <Footer :status="status" />
 </template>
 
 <script>

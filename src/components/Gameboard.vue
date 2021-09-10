@@ -10,7 +10,6 @@
       @select-card="selectCard"
     />
   </transition-group>
-  <h2>{{ status }}</h2>
 </template>
 
 <script>
@@ -21,10 +20,6 @@ export default {
     props: {
         cardList: {
             type: Array,
-            required: true,
-        },
-        status:{
-            type: String,
             required: true,
         },
     },
