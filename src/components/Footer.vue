@@ -24,4 +24,9 @@ footer {
   padding: 0.5em 0.4em 0.3em 0.4em;
   border-top: 1px solid #212529;
 }
+@media screen and (min-width: 1440px) {
+  footer {
+    justify-content: space-around;
+  }
+}
 </style>
