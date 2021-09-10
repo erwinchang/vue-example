@@ -45,8 +45,8 @@ export default {
 
 .game-board {
   display: grid;
-  grid-template-columns: repeat(6, 8em);
-  grid-template-rows: repeat(2, 14em);
+  grid-template-columns: repeat(4, 4.5em);
+  grid-template-rows: repeat(4, 7.3em);
   grid-gap: 0.6em;
   justify-content: center;
 }
