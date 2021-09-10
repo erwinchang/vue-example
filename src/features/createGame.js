@@ -24,22 +24,23 @@ export default function createGame(deck) {
     }
 
     const status = computed(() => {
-        if (remainingPairs.value === 0) {
-          return 'You won!'
+        if (matchesFound.value === 8) {
+          return 'Player wins!'
         } else {
-          return `Remaining Pairs: ${remainingPairs.value}`
+          return `Matches found: ${matchesFound.value}`
         }
     })
 
-    const remainingPairs = computed(() => {
-        const remainingCards = deck.value.filter(
-          (card) => card.matched === false
+    const matchesFound = computed(() => {
+        const matchedCards = deck.value.filter(
+          (card) => card.matched === true
         ).length
 
-        return remainingCards / 2
+        return matchedCards / 2
     })    
 
     return {
+        matchesFound,
         newPlayer,
         restartGame,
         startGame,

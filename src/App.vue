@@ -31,6 +31,7 @@ export default {
       newPlayer,
       startGame,
       restartGame,
+      matchesFound,
       status,
     } = createGame(cardList);
     const userSelection = ref([]);
@@ -92,7 +93,8 @@ export default {
       userSelection,
       status,
       startNewGame,
-      newPlayer
+      newPlayer,
+      matchesFound,
     };
   },
 };
