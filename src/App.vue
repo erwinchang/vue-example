@@ -1,50 +1,36 @@
 <template>
   <Header />
-  <h1>Flip a Card</h1>
-  <transition-group tag="section" class="game-board">
-    <Card
-      v-for="card in cardList"
-      :key="`${card.value}-${card.variant}`"
-      :value="card.value"
-      :visible="card.visible"
-      :position="card.position"
-      :matched="card.matched"
-      @select-card="flipCard"
-    />
-  </transition-group>
-  <h2>{{ status }}</h2>
+  <Gameboard :cardList="cardList" :status="status" @flip-card="flipCard" />
   <Button :newPlayer="newPlayer" @start-new-game="startNewGame" />
   <Footer />
 </template>
 
 <script>
 
-import Card from "./components/Card.vue";
-import { watch, ref } from "vue";
+import { ref, watch } from "vue";
 import createGame from "./features/createGame";
 import createDeck from "./features/createDeck";
 import rapDeck from "./data/rapDeck.json";
 import Header from "./components/Header.vue";
+import Gameboard from "./components/Gameboard.vue";
 import Button from "./components/Button.vue";
 import Footer from "./components/Footer.vue";
+
 
 export default {
   name: "App",
   components: {
     Header,
-    Card,
+    Gameboard,
     Button,
     Footer,
-  },
-  mounted() {
-    this.restartGame();
   },
   setup() {
     const { cardList } = createDeck(rapDeck);
     const {
       newPlayer,
-      restartGame,
       startGame,
+      restartGame,
       status,
     } = createGame(cardList);
     const userSelection = ref([]);
@@ -105,10 +91,8 @@ export default {
       flipCard,
       userSelection,
       status,
-      restartGame,
-      newPlayer,
-      startGame,
-      startNewGame
+      startNewGame,
+      newPlayer
     };
   },
 };
@@ -133,17 +117,5 @@ body {
 
 h1 {
   margin-top: 0;
-}
-
-.game-board {
-  display: grid;
-  grid-template-columns: repeat(6, 8em);
-  grid-template-rows: repeat(2, 14em);
-  grid-gap: 0.6em;
-  justify-content: center;
-}
-
-.shuffle-card-move {
-  transition: transform 0.8s ease-in;
 }
 </style>
