@@ -112,7 +112,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background: #fdf4ff;
-  padding-top: 3em;
   color: #212529;
   height: 100vh;
 }
