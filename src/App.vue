@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <h1>Flip a Card</h1>
   <transition-group tag="section" class="game-board">
     <Card
@@ -12,8 +13,8 @@
     />
   </transition-group>
   <h2>{{ status }}</h2>
-  <button v-if="newPlayer" @click="startGame" class="button">Start Game</button>
-  <button v-else @click="restartGame" class="button">Restart Game</button>
+  <Button :newPlayer="newPlayer" @start-new-game="startNewGame" />
+  <Footer />
 </template>
 
 <script>
@@ -23,11 +24,17 @@ import { watch, ref } from "vue";
 import createGame from "./features/createGame";
 import createDeck from "./features/createDeck";
 import rapDeck from "./data/rapDeck.json";
+import Header from "./components/Header.vue";
+import Button from "./components/Button.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
   components: {
+    Header,
     Card,
+    Button,
+    Footer,
   },
   mounted() {
     this.restartGame();
@@ -40,15 +47,15 @@ export default {
       startGame,
       status,
     } = createGame(cardList);
-
     const userSelection = ref([]);
 
-    cardList.value = cardList.value.map((card, index) => {
-      return {
-        ...card,
-        position: index,
-      };
-    });
+    const startNewGame = () => {
+      if (newPlayer) {
+        startGame();
+      } else {
+        restartGame();
+      }
+    };
 
     const flipCard = (payload) => {
       cardList.value[payload.position].visible = true;
@@ -100,7 +107,8 @@ export default {
       status,
       restartGame,
       newPlayer,
-      startGame
+      startGame,
+      startNewGame
     };
   },
 };
@@ -135,11 +143,6 @@ h1 {
   justify-content: center;
 }
 
-.button {
-  background: #212529;
-  color: #fff;
-  padding: 1em 2em;
-}
 .shuffle-card-move {
   transition: transform 0.8s ease-in;
 }

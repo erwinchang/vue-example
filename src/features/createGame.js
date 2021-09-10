@@ -1,5 +1,5 @@
-import _ from "lodash"
-import { computed, ref } from "vue"
+import _ from 'lodash'
+import { computed, ref } from 'vue'
 
 
 export default function createGame(deck) {
@@ -8,7 +8,7 @@ export default function createGame(deck) {
     const startGame = () => {
         newPlayer.value = false
         restartGame()
-    };
+    }
 
     const restartGame = () => {
         deck.value = _.shuffle(deck.value)
@@ -25,7 +25,7 @@ export default function createGame(deck) {
 
     const status = computed(() => {
         if (remainingPairs.value === 0) {
-          return "You won!"
+          return 'You won!'
         } else {
           return `Remaining Pairs: ${remainingPairs.value}`
         }
