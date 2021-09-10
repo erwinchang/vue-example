@@ -19,9 +19,10 @@
 <script>
 
 import Card from "./components/Card.vue";
-import { watch } from "vue";
+import { watch, ref } from "vue";
 import createGame from "./features/createGame";
-import { ref } from 'vue'
+import createDeck from "./features/createDeck";
+import rapDeck from "./data/rapDeck.json";
 
 export default {
   name: "App",
@@ -32,8 +33,7 @@ export default {
     this.restartGame();
   },
   setup() {
-    const cardList = ref([]);
-
+    const { cardList } = createDeck(rapDeck);
     const {
       newPlayer,
       restartGame,
@@ -42,33 +42,6 @@ export default {
     } = createGame(cardList);
 
     const userSelection = ref([]);
-
-    const cardItems = [
-      "andre3000",
-      "lilwayne",
-      "snoop",
-      "tupac",
-      "kanyewest",
-      "eminem",
-      "pharrell",
-      "chance",
-    ];
-
-    cardItems.forEach((item) => {
-      cardList.value.push({
-          value: item,
-          variant: 2,
-          visible: false,
-          position: null,
-          matched: false,
-      });
-      cardList.value.push({
-          value: item,
-          visible: false,
-          position: null,
-          matched: false,
-      });
-    });
 
     cardList.value = cardList.value.map((card, index) => {
       return {
