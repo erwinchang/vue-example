@@ -170,4 +170,9 @@ export default {
   justify-content: center;
 }
 
+.button {
+  background: #212529;
+  color: #fff;
+  padding: 1em 2em;
+}
 </style>
