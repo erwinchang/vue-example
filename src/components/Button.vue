@@ -29,6 +29,8 @@ export default {
 <style scoped>
 .button {
   background: #212529;
+  border: none;
+  border-radius: 1em;
   color: #fff;
   padding: 1em 2em;
 }
