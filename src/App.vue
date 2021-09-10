@@ -17,9 +17,11 @@
 </template>
 
 <script>
-import _ from "lodash";
+
 import Card from "./components/Card.vue";
-import { computed, ref, watch } from "vue";
+import { watch } from "vue";
+import createGame from "./features/createGame";
+import { ref } from 'vue'
 
 export default {
   name: "App",
@@ -31,36 +33,15 @@ export default {
   },
   setup() {
     const cardList = ref([]);
+
+    const {
+      newPlayer,
+      restartGame,
+      startGame,
+      status,
+    } = createGame(cardList);
+
     const userSelection = ref([]);
-    const newPlayer = ref(true);
-
-    const startGame = () => {
-      newPlayer.value = false;
-      restartGame();
-    };
-
-    const status = computed(() => {
-      if (remainingPairs.value === 0) {
-        return "You won!";
-      } else {
-        return `Remaining Pairs: ${remainingPairs.value}`;
-      }
-    });
-
-    const remainingPairs = computed(() => {
-      const remainingCards = cardList.value.filter(
-        (card) => card.matched === false
-      ).length;
-      return remainingCards / 2;
-    });
-
-    const restartGame = () => {
-      cardList.value = _.shuffle(cardList.value);
-
-      cardList.value = cardList.value.map((card, index) => {
-          return { ...card, matched: false, position: index, visible: false};
-      });
-    };
 
     const cardItems = [
       "andre3000",
