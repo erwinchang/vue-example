@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import confetti from "canvas-confetti";
+
 export default {
     name: "Button",
     props:{
@@ -17,6 +19,9 @@ export default {
     setup(props, ctx) {
         const startNewGame = () => {
             ctx.emit("start-new-game");
+      setTimeout(() => {
+        confetti.reset();
+      }, 1000);
         };
 
         return {
