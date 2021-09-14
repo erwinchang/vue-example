@@ -138,12 +138,25 @@ body {
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 4em 1fr 5em 4em;
+  grid-template-rows: 4em 1fr auto 4em;
   height: 100vh;
 }
+
 header,
 footer {
   font-family: metalista-web, serif;
   font-size: 2.5rem;
+}
+
+@media only screen and (max-width: 375px) and (max-height: 566px) {
+  header,
+  footer {
+    font-size: 1.5rem;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2.5em auto auto 2.5em;
+  }
 }
 </style>
