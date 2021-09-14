@@ -50,4 +50,13 @@ export default {
 .shuffle-card{
   transition: transform 0.8s ease-in;
 }
+
+@media screen and (min-width: 1024px) {
+  .game-board {
+    grid-template-columns: repeat(8, 6em);
+    grid-template-rows: repeat(2, 10em);
+    align-content: center;
+    margin: 1em 0;
+  }
+}
 </style>
