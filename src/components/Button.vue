@@ -28,10 +28,18 @@ export default {
 
 <style scoped>
 .button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10em;
+  height: 3.3em;
+  margin: 0 auto;
   background: var(--dark);
   border: none;
-  border-radius: 1em;
+  border-radius: 5em;
   color: var(--light);
   padding: 1em 2em;
+  margin-bottom: 2em;
 }
 </style>
