@@ -62,7 +62,7 @@ export default {
 
 .card-face {
   position: absolute;
-
+  left: -5px;
   width: 100%;
   height: 100%;
   border-radius: 0.7em;
@@ -73,6 +73,7 @@ export default {
   backface-visibility: hidden;
 
   box-shadow: var(--shadow);
+  border: 5px solid var(--light);
 }
 
 .card.is-flipped {
@@ -81,8 +82,12 @@ export default {
 
 .card-face.is-front {
   background: var(--front);
-  color: white;
+
   transform: rotateY(180deg);
+}
+
+.card-face.is-front:nth-child(even) {
+  background: var(--front);
 }
 
 img {
@@ -90,8 +95,17 @@ img {
   height: 3.4em;
 }
 
+.card-face.is-front,
 .card-face.is-back {
-  background: grey;
+  /* border: 5px solid var(--light); */
   color: var(--light);
+}
+
+.card-face.is-back {
+  background-color: var(--back);
+  background-image: url("../../public/img/mic.png");
+  background-size: 2em;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 </style>
