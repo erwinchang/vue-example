@@ -10,6 +10,7 @@
 <script>
 
 import { ref, watch } from "vue";
+import { launchConfetti } from "./utilities/confetti";
 import createGame from "./features/createGame";
 import createDeck from "./features/createDeck";
 import rapDeck from "./data/rapDeck.json";
@@ -63,6 +64,11 @@ export default {
       }
     };
 
+    watch(matchesFound, (currentValue) => {
+      if (currentValue === 8) {
+        launchConfetti();
+      }
+    });
     // check if more than 2 cards selected
     watch(
       userSelection,
