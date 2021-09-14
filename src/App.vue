@@ -135,5 +135,9 @@ body {
   grid-template-rows: 4em 1fr 5em 4em;
   height: 100vh;
 }
-
+header,
+footer {
+  font-family: metalista-web, serif;
+  font-size: 2.5rem;
+}
 </style>
