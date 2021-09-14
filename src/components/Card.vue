@@ -62,7 +62,7 @@ export default {
 
 .card-face {
   position: absolute;
-  left: -5px;
+  left:-3px;
   width: 100%;
   height: 100%;
   border-radius: 0.7em;
@@ -74,7 +74,7 @@ export default {
   cursor: pointer;
 
   box-shadow: var(--shadow);
-  border: 5px solid var(--light);
+  border: 3px solid var(--light);
 }
 
 .card.is-flipped {
@@ -117,6 +117,13 @@ export default {
 
   .card-face.is-back {
     background-size: 1em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .card-face {
+    left: -5px;
+    border: 5px solid var(--light);
   }
 }
 </style>
