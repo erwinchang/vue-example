@@ -1,7 +1,7 @@
 <template>
   <div class="card" @click="selectCard" :class="flippedStyles">
     <div class="card-face is-front">
-      <img :src="`/ex02/img/${value}.png`" :alt="value" />
+      <img :src="`/img/${value}.png`" :alt="value" />
     </div>
     <div class="card-face is-back"></div>
   </div>
