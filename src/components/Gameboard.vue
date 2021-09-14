@@ -40,13 +40,14 @@ export default {
 
 .game-board {
   display: grid;
-  grid-template-columns: repeat(4, 4.5em);
-  grid-template-rows: repeat(4, 7.3em);
-  grid-gap: 0.6em;
+  grid-template-columns: repeat(4, 3.5em);
+  grid-template-rows: repeat(4, 6.5em);
+  grid-gap: 1.4em;
   justify-content: center;
+  margin-top: 2em;
 }
 
-.shuffle-card-move {
+.shuffle-card{
   transition: transform 0.8s ease-in;
 }
 </style>
