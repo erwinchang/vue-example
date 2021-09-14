@@ -1,8 +1,10 @@
 <template>
-  <Header />
-  <Gameboard :cardList="cardList" @flip-card="flipCard" />
-  <Button :newPlayer="newPlayer" @start-new-game="startNewGame" />
-  <Footer :status="status" />
+  <div class="container">
+    <Header />
+    <Gameboard :cardList="cardList" @flip-card="flipCard" />
+    <Button :newPlayer="newPlayer" @start-new-game="startNewGame" />
+    <Footer :status="status" />
+  </div>
 </template>
 
 <script>
@@ -127,7 +129,11 @@ body {
     -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
 }
 
-h1 {
-  margin-top: 0;
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4em 1fr 5em 4em;
+  height: 100vh;
 }
+
 </style>
