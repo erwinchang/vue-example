@@ -1,15 +1,81 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+  <div class="board">
+    <Cell
+        v-for="cell in cells.flat(1)"
+        :key="cell.id"
+        :num="cell.val"
+        :shouldShow="cell.isShown"
+    />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from "vue"
+import Cell from "./components/Cell.vue"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Cell
+  },
+  setup() {
+    const createCells = getInitialCells();
+    const cells = ref(createCells);
+
+    return {
+      cells,
+    };
+  },
+};
+
+const getInitialCells = () =>{
+  const createCells = [];
+  let idCounter = 0;
+  for(let i = 0; i < 4; i++){
+    createCells[i] = [];
+    for(let j = 0; j < 4; j++){
+      idCounter++;
+      createCells[i][j] = {
+        id: idCounter,
+        val: 0,
+        isShown: false,
+      };
+    }
   }
-}
+  return createCells;
+};
 </script>
+<style >
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #faf8ef;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 450px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #bbada0;
+  border-radius: 6px;
+}
+.board {
+  width: 430px;
+  height: 430px;
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  row-gap: 10px;
+  column-gap: 10px;
+}
+</style>
