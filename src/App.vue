@@ -14,6 +14,11 @@ import { onMounted, ref } from "vue"
 import Cell from "./components/Cell.vue"
 import actions from "./helpers/userActions.js"
 
+// 共有16个格子，初始时初始数字由2或者4构成。
+// 1、手指向一个方向滑动，所有格子会向那个方向运动。
+// 2、相同数字的两个格子，相撞时数字会相加。
+// 3、每次滑动时，空白处会随机刷新出一个数字的格子。
+// 4、当界面不可运动时（当界面全部被数字填满时），游戏结束；当界面中最大数字是2048时，游戏胜利。
 export default {
   name: 'App',
   components: {
@@ -47,6 +52,9 @@ export default {
         case 40:
           getDownHandle(cells.value);
           break;
+      }
+      if ([37, 38, 39, 40].includes(e.keyCode)) {
+        updateNewCell(cells.value);
       }
     };
 
@@ -85,12 +93,21 @@ const getInitialCells = () =>{
     initialCells[1] = randomCell();
   }
 
-  for( let i = 0; i < 2; i++) {
+  for (let i = 0; i < 2; i++) {
     initialCells[i].val = 2;
     initialCells[i].isShown = true;
   }
 
+
   return createCells;
+};
+const updateNewCell = (cells) => {
+  let newCell = cells[randomIndex()][randomIndex()];
+  while (newCell.val !== 0) {
+    newCell = cells[randomIndex()][randomIndex()];
+  }
+  newCell.val = 2;
+  newCell.isShown = true;
 };
 
 const randomIndex = () => Math.floor(Math.random() * 4);
