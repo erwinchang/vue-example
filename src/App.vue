@@ -10,8 +10,9 @@
 </template>
 
 <script>
-import { ref } from "vue"
+import { onMounted, ref } from "vue"
 import Cell from "./components/Cell.vue"
+import actions from "./helpers/userActions.js"
 
 export default {
   name: 'App',
@@ -21,6 +22,37 @@ export default {
   setup() {
     const createCells = getInitialCells();
     const cells = ref(createCells);
+    const {
+      getLeftHandle,
+      getRightHandle,
+      getUpHandle,
+      getDownHandle,
+    } = actions;
+    
+    const keyUpHandler  = (e) => {
+      e.preventDefault();
+
+      //console.log(e.keyCode);
+      //up,down,left,right = 38,40,37,39
+      switch (e.keyCode){
+        case 37:
+          getLeftHandle(cells.value);
+          break;
+        case 38:
+          getUpHandle(cells.value);
+          break;
+        case 39:
+          getRightHandle(cells.value);
+          break;
+        case 40:
+          getDownHandle(cells.value);
+          break;
+      }
+    };
+
+    onMounted(() => {
+      window.addEventListener("keyup", throtte(keyUpHandler, 200));
+    });
 
     return {
       cells,
@@ -62,6 +94,17 @@ const getInitialCells = () =>{
 };
 
 const randomIndex = () => Math.floor(Math.random() * 4);
+
+//https://codeburst.io/throttling-and-debouncing-in-javascript-646d076d0a44
+const throtte = (fn, delay) => {
+  let pre = Date.now();
+  return function(...rest) {
+    if(Date.now() - pre > delay) {
+      fn.apply(this, rest);
+      pre = Date.now();
+    }
+  }
+};
 
 </script>
 <style >
