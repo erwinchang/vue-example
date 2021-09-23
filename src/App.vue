@@ -42,8 +42,27 @@ const getInitialCells = () =>{
       };
     }
   }
+
+  const randomCell = () => createCells[randomIndex()][randomIndex()];
+  let initialCells = [];
+  for(let i = 0; i < 2; i++) {
+    initialCells[i] = randomCell();
+  }
+
+  while ( initialCells[0] == initialCells[1]){
+    initialCells[1] = randomCell();
+  }
+
+  for( let i = 0; i < 2; i++) {
+    initialCells[i].val = 2;
+    initialCells[i].isShown = true;
+  }
+
   return createCells;
 };
+
+const randomIndex = () => Math.floor(Math.random() * 4);
+
 </script>
 <style >
 html,
