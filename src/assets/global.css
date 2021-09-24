@@ -4,3 +4,7 @@ body {
   font-family: 'Open Sans';
   background: #ece6d9;
 }
+h1 {
+    font-family: HyliaSerif;
+    letter-spacing: 4px;
+  }
