@@ -22,3 +22,6 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Example Source
+[iamshaunjp/vue-with-typescript](https://github.com/iamshaunjp/vue-with-typescript)
