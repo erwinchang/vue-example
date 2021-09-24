@@ -5,6 +5,7 @@
             <li v-for="job in orderdJobs" :key="job.id">
                 <h2> {{ job.title }} in {{ job.location }} </h2>
                 <div class="salary">
+                    <img src="../assets/rupee.svg" alt="rupee icon">
                     <p> {{ job.salary }} rupees </p>
                 </div>
                 <div class="description">
