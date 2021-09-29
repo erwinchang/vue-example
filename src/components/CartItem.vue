@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row cart-item-row">
         <div class="col-md-6">
             <Product :product="product" />
         </div>
@@ -35,3 +35,12 @@ export default {
     
 }
 </script>
+<style scoped>
+.cart-item-row{
+    border-bottom: 1px solid #ccc;
+    margin-top: 20px;
+}
+.cart-remove-button{
+    margin-top: 10px;
+}
+</style>
