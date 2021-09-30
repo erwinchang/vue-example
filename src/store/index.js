@@ -52,8 +52,6 @@ export default createStore({
     addCartItem(state, item){
         item.quantity = 1;
         state.cart.push(item);
-        console.log("tt11");
-        console.log(state.cart);
     },
     updateCartItem(state, updatedItem){
         state.cart = state.cart.map((cartItem) => {
