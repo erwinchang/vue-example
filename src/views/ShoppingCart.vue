@@ -3,41 +3,43 @@
     <div class="row">
       <div class="col-md-8 pt-5">
 
-       <CartItem v-for="product in cart" :product="product" :key="product.id" />
-        
+        <CartItem v-for="product in cart"
+                  :product="product"
+                  :key="product.id" />
+
       </div>
       <div class="col-md-4 pt-5">
         <!-- <SideNav /> -->
         <Cart />
       </div>
-      
+
     </div>
   </div>
 </template>
 
 <script>
-import {ref} from "vue";
-import CartItem from "../components/CartItem.vue"
-import Cart from "../components/Cart.vue"
-import { computed } from "vue"
-import { useStore } from "vuex"
+import { ref } from 'vue'
+import CartItem from '../components/CartItem.vue'
+import Cart from '../components/Cart.vue'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
   name: 'ShoppingCart',
   components: {
-    CartItem, 
+    CartItem,
     Cart
   },
 
-  setup(){
-    const store = useStore();
+  setup () {
+    const store = useStore()
 
-    let cart = computed(function() {
+    let cart = computed(function () {
       return store.state.cart
     });
 
     return {
-        cart
+      cart
     }
   }
 }

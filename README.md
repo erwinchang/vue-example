@@ -27,3 +27,7 @@ https://github.com/auth0-blog/vue-3-state-management
 帶入此物品(id),通過store的mutations更新
 當遇到此物品id時，則回傳更新quantity之後的product,產生新的cart array
 
+### VSCode Format
+
+https://jishuin.proginn.com/p/763bfbd358e4
+字符串必须使用单引號/结尾不要使用分號
