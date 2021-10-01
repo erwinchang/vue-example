@@ -10,10 +10,7 @@ const mutations = {
 
 const actions = {
   getProductItems ({ commit }) {
-    console.log('tt11')
     axios.get(`/api/products`).then((response) => {
-      console.log('tt22')
-      console.log(response.data)
       commit('UPDATE_PRODUCT_ITEMS', response.data)
     });
   }

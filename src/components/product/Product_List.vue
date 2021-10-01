@@ -1,8 +1,10 @@
 <template>
   <div class="container is-fluid">
     <div class="tile is-ancestor">
-      <div class="tile is-parent">
-        <ProductListItem />
+      <div class="tile is-parent"
+           v-for="productItem in productItems"
+           :key="productItem.id">
+        <ProductListItem :productItem="productItem" />
       </div>
     </div>
   </div>
@@ -23,7 +25,6 @@ export default {
     ])
   },
   created () {
-    console.log('created')
     this.$store.dispatch('getProductItems');
   }
 }
