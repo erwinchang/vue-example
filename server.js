@@ -9,7 +9,7 @@ app.get('/',(req,res) => {
 	res.send('Hello World')
 })
 
-app.get('/product', (req,res) => {
+app.get('/products', (req,res) => {
 	fs.readFile(PRODUCT_DATA_FILE, (err,data) =>{
 		res.setHeader('Cache-Control','no-cache')
 		res.json(JSON.parse(data))
