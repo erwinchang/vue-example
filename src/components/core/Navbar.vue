@@ -16,7 +16,7 @@
                          class="button is-warning">
               <p>
                 Total cart items:
-                <span> 00 </span>
+                <span> {{cartQuantity}} </span>
               </p>
             </router-link>
           </div>
@@ -25,3 +25,18 @@
     </div>
   </nav>
 </template>
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  name: 'Navbar',
+  computed: {
+    ...mapGetters([
+      'cartQuantity'
+    ])
+  },
+  created () {
+    this.$store.dispatch("getCartItems");
+  }
+}
+</script>
