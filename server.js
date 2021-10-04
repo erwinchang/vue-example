@@ -7,6 +7,35 @@ const PRODUCT_DATA_FILE = path.join(__dirname,'server-product-data.json')
 const CART_DATA_FILE = path.join(__dirname, 'server-cart-data.json')
 const port = 3001
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post('/cart', (req, res) => {
+	fs.readFile(CART_DATA_FILE, (err,data) => {
+		const cartProducts = JSON.parse(data);
+
+		const newCartProduct = {
+			id: req.body.id,
+			title: req.body.title,
+			description: req.body.description,
+			price: req.body.price,
+			image_tag: req.body.image_tag,
+			quantity: 1
+		}
+		let cartProductExists = false
+		cartProducts.map( (cartProduct) => {
+			cartProduct.quantity++
+			cartProductExists = true
+		})
+
+		if(!cartProductExists) cartProducts.push(newCartProduct);
+		fs.writeFile(CART_DATA_FILE, JSON.stringify(cartProducts,null, 4), () => {
+			res.setHeader('Cache-Control', 'no-cache')
+			res.json(cartProducts)
+		})
+	})
+})
+
 app.get('/',(req,res) => {
 	res.send('Hello World')
 })
