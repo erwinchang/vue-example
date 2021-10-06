@@ -9,6 +9,13 @@ const port = 3001
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  console.log("app.use");
+  next();
+});
 
 app.post('/cart', (req, res) => {
 	fs.readFile(CART_DATA_FILE, (err,data) => {
