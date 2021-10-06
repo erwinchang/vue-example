@@ -22,10 +22,13 @@ app.post('/cart', (req, res) => {
 			image_tag: req.body.image_tag,
 			quantity: 1
 		}
+
 		let cartProductExists = false
 		cartProducts.map( (cartProduct) => {
-			cartProduct.quantity++
-			cartProductExists = true
+			if (cartProduct.id === newCartProduct.id ) {
+				cartProduct.quantity++
+				cartProductExists = true
+			}
 		})
 
 		if(!cartProductExists) cartProducts.push(newCartProduct);
