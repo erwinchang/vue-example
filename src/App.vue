@@ -20,4 +20,9 @@ export default {
 </script>
 
 <style>
+html,
+body {
+  height: 100%;
+  background: #f2f6fa;
+}
 </style>
