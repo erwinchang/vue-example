@@ -19,7 +19,17 @@ const actions = {
 		axios.post('/api/cart',cartItem).then((response) => {
 			commit('UPDATE_CART_ITEMS', response.data)
 		})
-	}
+	},
+	removeCartItem( { commit }, cartItem){
+		axios.delete('/api/cart/delete',cartItem).then((response) => {
+			commit('UPDATE_CART_ITEMS', response.data)
+		})
+	},
+	removeAllCartItems( { commit } ){
+		axios.delete('/api/cart/delete/all' ).then((response) => {
+			commit('UPDATE_CART_ITEMS', response.data)
+		})
+	}  
 }
 
 const getters = {

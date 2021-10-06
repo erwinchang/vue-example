@@ -22,13 +22,26 @@
       </div>
       <br>
     </ul>
+    <div class="buttons">
+      <button :disabled="!cartItems.length"
+              class="button is-info">
+        Checkout (<span class="has-text-weight-bold">${{ cartTotal }}</span>)
+      </button>
 
+      <button class="button is-danger is-outlined"
+              @click="removeAllCartItems">
+        <span>Delete All items</span>
+        <span class="icon is-small">
+          <i class="fas fa-times"></i>
+        </span>
+      </button>
+    </div>
   </div>
 </template>
 
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import CartListItem from './Cart_List_Item'
 
 export default {
@@ -41,6 +54,9 @@ export default {
   },
   created () {
     this.$store.dispatch("getCartItems");
+  },
+  methods: {
+    ...mapActions(['removeAllCartItems']),
   }
 }
 </script>

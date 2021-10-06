@@ -11,7 +11,7 @@
           <i class="fas fa-location-arrow"
              @click="addCartItem(cartItem)">(+)</i>
           <i class="fa fa-arrow-circle-down cart-item__modify"
-             @click="removeCartItem(cartItem)">(-)</i>
+             @click="removeCartItem(cartItem)"></i>
         </span>
       </div>
 
@@ -26,7 +26,8 @@ export default {
   props: ['cartItem'],
   methods: {
     ...mapActions([
-      'addCartItem'
+      'addCartItem',
+      'removeCartItem'
     ])
   }
 }
