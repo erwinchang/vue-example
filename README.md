@@ -1,36 +1,45 @@
 # vue3 example
 
-## 建立方式
+## ex01
 
-選vue3
-```
-vue create ex01
+1. 增加Test01.vue
 
-cd ex01
-npm run server
 ```
+<template>
+    <div>Title</div>
+    <h1>{{ msg }}</h1>
+</template>
 
---------
+<script>
+export default {
+  name: 'Test01',
+  props: {
+    msg: String
+  }
+}
+</script>
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
 ```
 
-### Lints and fixes files
+2. 修改app.vue
+
 ```
-npm run lint
+<template>
+  <Test01 msg="Welcome to Your Vue.js App"/>
+</template>
+
+<script>
+import Test01 from './components/Test01.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Test01
+  }
+}
+</script>
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+測試如下
+
+<a href="https://imgur.com/hRZ4VQi"><img src="https://i.imgur.com/hRZ4VQi.png" title="source: imgur.com" width="400px" /></a>
