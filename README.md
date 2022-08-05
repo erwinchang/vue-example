@@ -1,4 +1,16 @@
-# ex02
+# vue3 example
+
+## 建立方式
+
+選vue3
+```
+vue create ex01
+
+cd ex01
+npm run server
+```
+
+--------
 
 ## Project setup
 ```
