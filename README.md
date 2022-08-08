@@ -17,7 +17,7 @@ npm run dev
 npm run build
 ```
 
-![image](https://github.com/erwinchang/csharp_example/blob/vite-ex02/test.gif)
+![image](https://https://github.com/erwinchang/vue-example/blob/vite-ex02/test.gif)
 
 
 ### 說明
