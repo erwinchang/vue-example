@@ -7,14 +7,18 @@
       v-model='query'
       />
       <br>
-      {{ query }}
       <button @click="reset">Reset</button>
+      <SearchResults :query="query" />
   </div>
 </template>
 
 <script>
 import { ref } from 'vue'
+import SearchResults from './SearchResults.vue'
 export default {
+  components:{
+    SearchResults,
+  },
   setup(){
     const query = ref('')
 
@@ -30,3 +34,10 @@ export default {
   },
 }
 </script>
+
+<style>
+  input[type='text'] {
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+</style>
