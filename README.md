@@ -17,7 +17,38 @@ npm run dev
 npm run build
 ```
 
-<a href="https://imgur.com/us6PzcB"><img src="https://i.imgur.com/us6PzcB.png" title="source: imgur.com" width="400px" /></a>
+![image](https://github.com/erwinchang/csharp_example/blob/vite-ex02/test.gif)
 
-[为什么选 Vite][1]
+
+### 說明
+
+什麼是Composition API
+- 是指Vue 3.0新增功能，將一些東西寫在setup()裡面
+
+vue2.0是採用data, 在vue3.0採用setup()
+```
+## vue2.0
+data:{
+	msg: 'Hello World'
+}
+## vue3.0
+setup() {
+	const msg = ref('Hello World');
+	return {msg}
+}
+```
+
+
+Reactive Data in the Composition API
+```
+import { ref } from 'vue'
+```
+
+------------
+
+參考來源:  
+- [为什么选 Vite][1]  
+- [Creating Your First Vue 3 Project - A Vue Tutorial][2]  
+
 [1]:https://cn.vitejs.dev/guide/why.html#the-problems
+[2]:https://learnvue.co/tutorials/intro-to-vue-3

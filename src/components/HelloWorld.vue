@@ -1,19 +1,25 @@
 <template>
-  <h1>{{ msg }}</h1>
-  <button @click="count++">count is: {{ count }}</button>
-  <p>Edit <code>components/HelloWorld.vue</code> to test hot module replacement.</p>
+  <div>
+    <h2> Filter LearnVue Articles </h2>
+    <input 
+      type = 'text'
+      placeholder='Filter Search'
+      v-model='query'
+      />
+      <br>
+      {{ query }}
+  </div>
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-  data() {
+  setup(){
+    const query = ref('')
+
     return {
-      count: 0
+      query,
     }
-  }
+  },
 }
 </script>
