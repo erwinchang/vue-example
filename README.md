@@ -44,6 +44,33 @@ Reactive Data in the Composition API
 import { ref } from 'vue'
 ```
 
+### 1-1 如何增加reset function
+
+```
+<script>
+import { ref } from 'vue'
+export default {
+  setup(){
+    const query = ref('')
+
+    const reset = (evt) =>{
+      console.log(query)
+      query.value = ''  //clear the query
+    }
+
+    return {
+      reset,
+      query,
+    }
+  },
+}
+</script>
+```
+
+注意console.log可以打印如下
+
+<a href="https://imgur.com/FvnIqUH"><img src="https://i.imgur.com/FvnIqUH.png" title="source: imgur.com" width="400px" /></a>
+
 ------------
 
 參考來源:  
