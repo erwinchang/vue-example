@@ -1,6 +1,6 @@
 <script setup>
   import { Disclosure } from '@headlessui/vue'
-  import { ref } from 'vue'
+  import { reactive,ref,toRef } from 'vue'
   import ChildComponent from './components/ChildComponent.vue'
 
   const colorArray = ['bg-cyan-300', 'bg-amber-300', 'bg-emerald-300', 'bg-rose-300']
@@ -12,6 +12,20 @@
     randomColor.value = colorArray[Math.floor(colorArray.length * Math.random())]
     console.log('transition')
   }
+
+  let people = reactive({name:'mika', age:'22'})
+  let people2 = toRef(people,"name")
+  let people3 = ref(people.name)
+  console.log('people.name =' + people.name)
+  console.log('people2.value =' + people2.value)
+  console.log('people3.value =' + people3.value)
+  setTimeout(()=>{
+    people3.value = 'admin'
+    console.log('-- change people.name')
+    console.log('people.name =' + people.name)
+    console.log('people2.value =' + people2.value)
+    console.log('people3.value =' + people3.value)
+  })
 </script>
 
 <template>
