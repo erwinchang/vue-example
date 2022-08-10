@@ -9,6 +9,9 @@ ref、reactive、toRef、toRefs都属于VUE3中Composition API的新特性
 
 結論:
 ref是不会去更改原数据的，ref本质是拷贝原数据，而toRef会修改原数据
+ref、reactive数据更新后立马会更新HTML视图
+toRef、toRefs更新会后会等下次更新视图的时候更新视图
+如果数据是通过toRef创建的，修改值后，数据不会触发视图，会等下次更新视图的时候一起更新
 
 ### ref
 
@@ -181,5 +184,12 @@ App.vue:25 people.name =mika
 App.vue:26 people2.value =mika
 App.vue:27 people3.value =admin
 ```
+
+### toRefs
+
+将响应式对象转换为普通对象，其中结果对象的每个 property 都是指向原始对象相应 property 的 ref
+
+- 批量版的toRef
+toRef不是只能对象中的一个属性嘛，这个可以直接给你整个对象的属性都一起给整成ref
 
 [1]:https://www.jianshu.com/p/0c171ecb0e2a
