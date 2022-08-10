@@ -37,6 +37,11 @@ import './index.css'
 createApp(App).mount('#app')
 ```
 
+5 add transition animation component
+Install the headlessui/vue in order to access the transition animation component
+```
+npm install @headlessui/vue
+```
 
 [Install Tailwind CSS with Vue 3 and Vite][2]
 
