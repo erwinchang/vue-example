@@ -1,11 +1,3 @@
-<script setup>
-import { Disclosure } from '@headlessui/vue'
-
-const transition = () => {
- //
-}
-</script>
-
 <template>
   <div class="min-h-full">
     <Disclosure as="nav" class="bg-gray-800">
@@ -24,9 +16,21 @@ const transition = () => {
     <main>
       <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div class="px-4 py-6 sm:px-0">
-          <!-- ChildComponent goes here -->
+          <ChildComponent :show="show" />
         </div>
       </div>
     </main>
   </div>
 </template>
+
+<script setup>
+import { Disclosure } from '@headlessui/vue'
+import { ref } from 'vue'
+import ChildComponent from './components/ChildComponent.vue'
+
+const show = ref(true)
+
+const transition = () => {
+  show.value = !show.value
+}
+</script>
