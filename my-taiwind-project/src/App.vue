@@ -7,9 +7,10 @@
   const randomColor = ref(colorArray[0])
   const show = ref(true)
 
-  const transition = () => {
-    show.value = !show.value
+  const transition = () => {    
+    show.value = !show.value;
     randomColor.value = colorArray[Math.floor(colorArray.length * Math.random())];
+    console.log('transition');
   }
 </script>
 
