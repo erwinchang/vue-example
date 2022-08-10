@@ -1,3 +1,18 @@
+<script setup>
+  import { Disclosure } from '@headlessui/vue'
+  import { ref } from 'vue'
+  import ChildComponent from './components/ChildComponent.vue'
+
+  const colorArray = ['bg-cyan-300', 'bg-amber-300', 'bg-emerald-300', 'bg-rose-300']
+  const randomColor = ref(colorArray[0])
+  const show = ref(true)
+
+  const transition = () => {
+    show.value = !show.value
+    randomColor.value = colorArray[Math.floor(colorArray.length * Math.random())];
+  }
+</script>
+
 <template>
   <div class="min-h-full">
     <Disclosure as="nav" class="bg-gray-800">
@@ -16,21 +31,9 @@
     <main>
       <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <div class="px-4 py-6 sm:px-0">
-          <ChildComponent :show="show" />
+          <ChildComponent :show="show" :randomColor="randomColor" />
         </div>
       </div>
     </main>
   </div>
 </template>
-
-<script setup>
-import { Disclosure } from '@headlessui/vue'
-import { ref } from 'vue'
-import ChildComponent from './components/ChildComponent.vue'
-
-const show = ref(true)
-
-const transition = () => {
-  show.value = !show.value
-}
-</script>

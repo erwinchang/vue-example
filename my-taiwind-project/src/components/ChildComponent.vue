@@ -12,7 +12,7 @@
         leave-from="opacity-100 rotate-0 scale-100 "
         leave-to="opacity-0 scale-95 "
       >
-        <div class="w-full h-full rounded-md shadow-lg" />
+        <div class="w-full h-full rounded-md shadow-lg" :class="randomColor" />
       </TransitionRoot>
     </div>
   </div>
@@ -23,7 +23,8 @@ import { ref, toRefs, watch } from 'vue'
 import { TransitionRoot } from '@headlessui/vue'
 
 const props = defineProps({
-  show: Boolean
+  show: Boolean,
+  randomColor: String  
 })
 const { show } = toRefs(props)
 const isShowing = ref(true)
