@@ -1,30 +1,29 @@
+## CH1.4.4 模板綁定
 
-## v-mode.number
 
-問題:若要直接將輸入示為數字處理
-採用: v-mode.number將文字轉為字串
+### v-text
+
+原本採用```{{ }}```，來取得變數內容  
+也可以採用v-text方式  
 
 ```
-<script>
-export default{
-  data(){
-    return {
-      num1: 0,
-      num2: 0
-    }
-  },
-  computed:{
-    sum(){
-      return this.num1 + this.num2
-    }
-  }
-}
-</script>
+<div v-text="text"></div>
 
+<div> {{ text }} </div>
+```
+
+範例如下  
+
+```
 <template>
-<input v-model="num1" /> + <input v-model="num2" /> = {{ sum }}
+  <div v-text="text">World!</div>
+  <br/>
+  <div> {{ text }} World!</div>
 </template>
 ```
 
-範例如下,變成字串相加，非數字加法
-<a href="https://imgur.com/l7w4g3U"><img src="https://i.imgur.com/l7w4g3U.gif" title="source: imgur.com" width="400px" /></a>
+輸出如下  
+**採用v-text方式，只會出現HELLO**  
+
+
+<a href="https://imgur.com/sLy5EMn"><img src="https://i.imgur.com/sLy5EMn.png" title="source: imgur.com" /></a>

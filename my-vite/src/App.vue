@@ -2,18 +2,14 @@
 export default{
   data(){
     return {
-      num1: 0,
-      num2: 0
-    }
-  },
-  computed:{
-    sum(){
-      return this.num1 + this.num2
+      text: 'HELLO'
     }
   }
 }
 </script>
 
 <template>
-<input v-model.number="num1" /> + <input v-model.number="num2" /> = {{ sum }}
+  <div v-text="text">World!</div>
+  <br/>
+  <div> {{ text }} World!</div>
 </template>
