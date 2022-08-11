@@ -1,28 +1,39 @@
-# vue-example
+## 如何綁定標籤屬性
 
-## computed
+採用v-bind指令方式如下
 
-為何computed只產生一次log?  
-copmputed會將結果暫存起來，若值沒變，就不會再執行一次  
-
-範例
 ```
+<p v-bind:id="customId">...</p>
+
+<script>
+	data(){
+		return customId: 'item-id-1'
+	}
+</script>
+```
+
+HTML render如下
+```
+<p id="item-id-1">...</p>
+```
+
+------
+
+範例設定button disabled  
+此時button預設為disabled  
+
+```
+<script>
+export default{
+  data(){
+    return {
+      isBtnDisable: true
+    }
+  }
+}
+</script>
+
 <template>
-  <p>total {{ subtotalComputed }}</p>
-  <p>total {{ subtotalComputed }}</p>
-  <p>total {{ subtotalComputed }}</p>
-  <p>total {{ subtotalMethods() }}</p>
-  <p>total {{ subtotalMethods() }}</p>
-  <p>total {{ subtotalMethods() }}</p>
+  <button v-bind:disabled="isBtnDisable"> Click me!</button>
 </template>
-```
-
-測試
-```
-[vite] connecting...
-client:46 [vite] connected.
-App.vue:11 computed
-App.vue:17 Methods
-App.vue:17 Methods
-App.vue:17 Methods
 ```
