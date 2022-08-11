@@ -2,8 +2,8 @@
 
 ## computed
 
-為何computed只產生一次log?
-copmputed會將結果暫存起來，若值沒變，就不會再執行一次
+為何computed只產生一次log?  
+copmputed會將結果暫存起來，若值沒變，就不會再執行一次  
 
 範例
 ```
