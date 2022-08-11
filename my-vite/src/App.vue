@@ -15,5 +15,5 @@ export default{
 </script>
 
 <template>
-<input v-model="num1" /> + <input v-model="num2" /> = {{ sum }}
+<input v-model.number="num1" /> + <input v-model.number="num2" /> = {{ sum }}
 </template>
