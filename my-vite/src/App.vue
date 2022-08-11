@@ -9,6 +9,6 @@ export default{
 </script>
 
 <template>
-  <input v-model="message" placeholder="edit me"></input>
-  <p>Mesasge is: {{ message }}</p>
+  <p><span>Multiline Mesasge is:</span>{{ message }}</p>
+  <textarea v-model="message" placeholder="add multiple lines"></textarea> 
 </template>
