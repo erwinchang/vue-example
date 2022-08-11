@@ -2,13 +2,20 @@
 export default{
   data(){
     return {
-      message: 'Hello'
+      picked: 1
     }
   }
 }
 </script>
 
 <template>
-  <p><span>Multiline Mesasge is:</span>{{ message }}</p>
-  <textarea v-model="message" placeholder="add multiple lines"></textarea> 
+  <div>
+    <input type="radio" id="one" value="1" v-model="picked" />
+    <label for="one">One</label>    
+  </div>
+  <div>
+    <input type="radio" id="two" value="2" v-model="picked" />
+    <label for="two">Two</label>
+  </div>
+  <span>Picked: {{ picked }}</span>
 </template>

@@ -39,3 +39,33 @@ export default{
 ```
 <testarea v-mode="message" placeholder="add multiple lines"></testarea>
 ```
+
+### 2-3 input 提供兩選擇radio及checkbox
+
+radio
+```
+<script>
+export default{
+  data(){
+    return {
+      picked: 1
+    }
+  }
+}
+</script>
+
+<template>
+  <div>
+    <input type="radio" id="one" value="1" v-model="picked" />
+    <label for="one">One</label>    
+  </div>
+  <div>
+    <input type="radio" id="two" value="2" v-model="picked" />
+    <label for="two">Two</label>
+  </div>
+  <span>Picked: {{ picked }}</span>
+</template>
+```
+
+範例如下
+<a href="https://imgur.com/AabHoGA"><img src="https://i.imgur.com/AabHoGA.gif" title="source: imgur.com" width="400px"/></a>
