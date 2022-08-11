@@ -10,45 +10,25 @@ v-model表單綁定用在: input textare select等
 <p :id="customId">...</p>
 ```
 
-### 採用v-bind指令方式如下
-
-```
-<p v-bind:id="customId">...</p>
-
-<script>
-	data(){
-		return customId: 'item-id-1'
-	}
-</script>
-```
-
-HTML render如下
-```
-<p id="item-id-1">...</p>
-```
-
-v-bind可以寫成如下
-```
-<p :id="customId">...</p>
-```
-
-```:```表示Vue實体v-bind綁定後屬性
-
-
-### 範例
+### 2 表單綁定v-model
 
 ```
 <script>
 export default{
   data(){
     return {
-      isBtnDisable: true
+      message: 'Hello'
     }
   }
 }
 </script>
 
 <template>
-  <button v-bind:disabled="isBtnDisable"> Click me!</button>
+  <input v-model="message" placeholder="edit me"></input>
+  <p>Mesasge is: {{ message }}</p>
 </template>
 ```
+
+範例如下
+
+![image](https://github.com/erwinchang/csharp_example/blob/vite-OptionsAPI-v-model/test.gif)

@@ -2,12 +2,13 @@
 export default{
   data(){
     return {
-      isBtnDisable: true
+      message: 'Hello'
     }
   }
 }
 </script>
 
 <template>
-  <button v-bind:disabled="isBtnDisable"> Click me!</button>
+  <input v-model="message" placeholder="edit me"></input>
+  <p>Mesasge is: {{ message }}</p>
 </template>
