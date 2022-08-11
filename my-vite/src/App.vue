@@ -2,20 +2,21 @@
 export default{
   data(){
     return {
-      picked: 1
+      checkedName: []
     }
   }
 }
 </script>
 
 <template>
-  <div>
-    <input type="radio" id="one" value="1" v-model="picked" />
-    <label for="one">One</label>    
-  </div>
-  <div>
-    <input type="radio" id="two" value="2" v-model="picked" />
-    <label for="two">Two</label>
-  </div>
-  <span>Picked: {{ picked }}</span>
+  <input type="checkbox" id="jack" value="Jack" v-model="checkedName" />
+  <label for="jack">Jack</label>
+  <input type="checkbox" id="john" value="John" v-model="checkedName" />
+  <label for="john">John</label>
+  <input type="checkbox" id="mike" value="Mike" v-model="checkedName" />
+  <label for="mike">Mike</label>
+  <input type="checkbox" id="mary" value="Mary" v-model="checkedName" />
+  <label for="mary">Mary</label>
+  <br />
+  <p>Checked name: {{ checkedName }}</p>
 </template>

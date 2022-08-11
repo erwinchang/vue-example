@@ -42,7 +42,8 @@ export default{
 
 ### 2-3 input 提供兩選擇radio及checkbox
 
-radio
+#### radio input
+
 ```
 <script>
 export default{
@@ -69,3 +70,37 @@ export default{
 
 範例如下
 <a href="https://imgur.com/AabHoGA"><img src="https://i.imgur.com/AabHoGA.gif" title="source: imgur.com" width="400px"/></a>
+
+
+#### checkbox iput
+
+跟radio主要差在，checkbox是可以多選，因此資料為array
+
+
+```
+<script>
+export default{
+  data(){
+    return {
+      checkedName: []
+    }
+  }
+}
+</script>
+
+<template>
+  <input type="checkbox" id="jack" value="Jack" v-model="checkedName" />
+  <label for="jack">Jack</label>
+  <input type="checkbox" id="john" value="John" v-model="checkedName" />
+  <label for="john">John</label>
+  <input type="checkbox" id="mike" value="Mike" v-model="checkedName" />
+  <label for="mike">Mike</label>
+  <input type="checkbox" id="mary" value="Mary" v-model="checkedName" />
+  <label for="mary">Mary</label>
+  <br />
+  <p>Checked name: {{ checkedName }}</p>
+</template>
+```
+
+範例如下
+<a href="https://imgur.com/8DCf0kt"><img src="https://i.imgur.com/8DCf0kt.gif" title="source: imgur.com" width="400px" /></a>
