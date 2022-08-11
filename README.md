@@ -82,7 +82,7 @@ export default{
 export default{
   data(){
     return {
-      checkedName: []
+      checkedName: ["Jack","John","Mike","Mary"]
     }
   }
 }
@@ -104,3 +104,27 @@ export default{
 
 範例如下
 <a href="https://imgur.com/8DCf0kt"><img src="https://i.imgur.com/8DCf0kt.gif" title="source: imgur.com" width="400px" /></a>
+
+
+#### checkbox iput/也可以單選
+
+
+```
+<script>
+export default{
+  data(){
+    return {
+      isChecked: false
+    }
+  }
+}
+</script>
+
+<template>
+  <input type="checkbox" id="checkbox"  v-model="isChecked" />
+  <label for="checkbox">Status: {{ isChecked }}</label>
+</template>
+```
+
+範例如下
+<a href="https://imgur.com/GHyVrFu"><img src="https://i.imgur.com/GHyVrFu.gif" title="source: imgur.com" /></a>
