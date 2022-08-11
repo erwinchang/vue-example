@@ -31,4 +31,4 @@ export default{
 
 範例如下
 
-![image](https://github.com/erwinchang/csharp_example/blob/vite-OptionsAPI-v-model/test.gif)
+![image](https://github.com/erwinchang/vue-example/blob/734b1ba95919c9b3907bb565150de06fcfb6237e/test.gif)
