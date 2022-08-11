@@ -2,18 +2,30 @@
 export default{
   data(){
     return {
-      count: 0
+      quantity: 50,
+      price: 100
+    }
+  },
+  computed:{
+    subtotalComputed: function(){
+      console.log('computed')
+      return this.quantity * this.price
+    }
+  },
+  methods:{
+    subtotalMethods: function(){
+      console.log('Methods')
+      return this.quantity * this.price
     }
   }
 }
 </script>
 
 <template>
-  <button @click='count++'>Count is: {{ count }}</button>
+  <p>total {{ subtotalComputed }}</p>
+  <p>total {{ subtotalComputed }}</p>
+  <p>total {{ subtotalComputed }}</p>
+  <p>total {{ subtotalMethods() }}</p>
+  <p>total {{ subtotalMethods() }}</p>
+  <p>total {{ subtotalMethods() }}</p>
 </template>
-
-<style scoped>
-button {
-  font-weight: bold;
-}
-</style>
