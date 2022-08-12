@@ -2,9 +2,12 @@
 
 #### .self
 
+只會觸發元素自已事件行為
+
 範例如下  
 當自已物件(modal-container)上面還有一層物件(modal-body)  
 在物件(modal-container)及物件(modal-body)上面按下Click都會產生 物件(modal-container)的Click事件如下  
+why? 因為click會往外產生，因此點在物件(modal-body)也會產生物件(modal-container)的click
 
 <a href="https://imgur.com/kE8XC25"><img src="https://i.imgur.com/kE8XC25.gif" title="source: imgur.com" width="400px" /></a>
  
