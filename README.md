@@ -1,105 +1,47 @@
 ## CH1.5 事件處理
 
-v-on : 
-```
-v-on:[事件名稱]="運算式"
-```
+### 1.5.3 v-on與修飾子
 
-整理一下，前面說明
+.stop
+同event.stopPropagation()
+防止事件冒泡
 
-v-model : 資料連結等
-v-bind  : css連結等
 
-```
-v-bind單向綁定用在: 標籤的id,圖片的src,連結的href等DOM的屬性
-v-model表單綁定用在: input textare select等
-
-v-model.trim="message"
-v-bind:class="{ 'error': message.length > 5 }"/>
-
-v-text : 字串
-v-html : HTML render
-v-once : 只會render第一次，之後不會改變
-v-pre : 想要在網頁上面呈現{{ }}
-
-v-mode.lazy : 改為change事件，當使用者離開輸入框時，才會更新data
-v-mode.number : 將文字轉為字串
-v-mode.trim : 去除文字輸入空白部分
-```
-
-### 1.5.1 v-on事件處理
-
-```
-v-on:[事件名稱]="運算式"
-```
-
+#### 1 未加.stop，內部的click會傳到外部
 ```
 <script>
 export default{
   data(){
     return {
-      count: 0
-    }
-  }
-}
-</script>
-
-<template>
-  <p>Count: {{ count }}</p>
-  <button v-on:click="count++">Plus</button>
-</template>
-```
-
-採用methods方式如下
-```
-<script>
-export default{
-  data(){
-    return {
-      count: 0
+      message: ''
     }
   },
   methods:{
-    plus(){
-      this.count++
+    msgShow: function(msg) {
+      console.log(msg)
     }
   }
+
 }
 </script>
 
 <template>
-  <p>Count: {{ count }}</p>
-  <button v-on:click="plus">Plus</button>
+  <div class="outer" v-on:click="msgShow('Outer')">
+  <span>Outer</span>
+    <div class="inner" v-on:click="msgShow('Inner')">Inner</div>
+  </div>
 </template>
 ```
 
-### 1.5.2 v-on與event物件
+<a href="https://imgur.com/HOxJ5BV"><img src="https://i.imgur.com/HOxJ5BV.gif" title="source: imgur.com" /></a>
 
-JS會Listener事件物件(EventObject)，裡面包含事件有關的屬性，方法等
 
-```
-<script>
-export default{
-  data(){
-    return {
-      amount: 0,
-      count: 0
-    }
-  },
-  methods:{
-    plus(amount, event){
-      console.log(event.target.tagName)
-      this.count += amount
-    }
-  }
-}
-</script>
 
-<template>
-  <p><input v-model.number="amount" /></p>
-  <p>Count: {{ count }}</p>
-  <button v-on:click="plus(amount,$event)">Plus</button>
-</template>
-```
+------------
 
-<a href="https://imgur.com/U0qjixb"><img src="https://i.imgur.com/U0qjixb.gif" title="source: imgur.com" /></a>
+參考說明
+- [[JavaScript]所謂的「停止事件」到底是怎麼一回事][1]
+
+
+[1]:https://ithelp.ithome.com.tw/articles/10198999
+[2]:https://book.vue.tw/CH1/1-5-events.html

@@ -2,21 +2,21 @@
 export default{
   data(){
     return {
-      amount: 0,
-      count: 0
+      message: ''
     }
   },
   methods:{
-    plus(amount, event){
-      console.log(event.target.tagName)
-      this.count += amount
+    msgShow: function(msg) {
+      console.log(msg)
     }
   }
+
 }
 </script>
 
 <template>
-  <p><input v-model.number="amount" /></p>
-  <p>Count: {{ count }}</p>
-  <button v-on:click="plus(amount,$event)">Plus</button>
+  <div class="outer" v-on:click="msgShow('Outer')">
+  <span>Outer</span>
+    <div class="inner" v-on:click="msgShow('Inner')">Inner</div>
+  </div>
 </template>
