@@ -10,13 +10,9 @@ export default{
       console.log(msg)
     }
   }
-
 }
 </script>
 
 <template>
-  <div class="outer" @click="msgShow('Outer')">
-  <span>Outer</span>
-    <div class="inner" @click.stop="msgShow('Inner')">Inner</div>
-  </div>
+  <a href="#123" class="btn" @click.prevent="msgShow('hello')">click me!</a>
 </template>

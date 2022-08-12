@@ -1,13 +1,13 @@
 ## CH1.5 事件處理
+
 ### 1.5.3 v-on與修飾子
 
-.stop
-同event.stopPropagation()
-防止事件冒泡
+#### .prevent
 
+防止元件的預設行為(ex. href)
 
+##### 會執行連結動作(即tag 123)
 
-#### 1 未加.stop，內部的click event會傳到外部
 ```
 <script>
 export default{
@@ -21,39 +21,22 @@ export default{
       console.log(msg)
     }
   }
-
 }
 </script>
 
 <template>
-  <div class="outer" v-on:click="msgShow('Outer')">
-  <span>Outer</span>
-    <div class="inner" v-on:click="msgShow('Inner')">Inner</div>
-  </div>
+  <a href="#123" class="btn" @click="msgShow('hello')">click me!</a>
 </template>
 ```
+<a href="https://imgur.com/EVNdTbV"><img src="https://i.imgur.com/EVNdTbV.gif" title="source: imgur.com" /></a>
 
-<a href="https://imgur.com/HOxJ5BV"><img src="https://i.imgur.com/HOxJ5BV.gif" title="source: imgur.com" /></a>
 
-
-#### 2 加.stop，防止內部的click event會傳到外部
+##### 加入.prevent，不會執行連結動作(即tag 123)
 
 ```
 <template>
-  <div class="outer" @click="msgShow('Outer')">
-  <span>Outer</span>
-    <div class="inner" @click.stop="msgShow('Inner')">Inner</div>
-  </div>
+  <a href="#123" class="btn" @click.prevent="msgShow('hello')">click me!</a>
 </template>
 ```
 
-<a href="https://imgur.com/sU32WXq"><img src="https://i.imgur.com/sU32WXq.gif" title="source: imgur.com" /></a>
-
-------------
-
-參考說明
-- [[JavaScript]所謂的「停止事件」到底是怎麼一回事][1]
-
-
-[1]:https://ithelp.ithome.com.tw/articles/10198999
-[2]:https://book.vue.tw/CH1/1-5-events.html
+<a href="https://imgur.com/tLvHjx7"><img src="https://i.imgur.com/tLvHjx7.gif" title="source: imgur.com" /></a>
