@@ -17,7 +17,7 @@ export default{
 
 <template>
   <div class="modal-mask" v-bind:style="modalStyle">
-    <div class="modal-container" @click="isShow = false">
+    <div class="modal-container" @click.self="isShow = false">
       <div class="modal-body">Hello!</div>
     </div>
   </div>
