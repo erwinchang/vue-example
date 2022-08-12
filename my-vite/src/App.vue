@@ -14,7 +14,7 @@ export default{
 </script>
 
 <template>
-  <div class="outer" @click="msgShow('Outer')">
+  <div class="outer" @click.capture="msgShow('Outer')">
     <span>Outer</span>
     <div class="inner" @click="msgShow('Inner')">Inner</div>
   </div>

@@ -35,4 +35,10 @@ export default{
 </template>
 ```
 
-<a href="https://imgur.com/ytxV18G"><img src="https://i.imgur.com/ytxV18G.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/ytxV18G"><img src="https://i.imgur.com/ytxV18G.gif" title="source: imgur.com" width="400px" /></a>
+
+
+當Outer加入.capture，Click產生順序就會反過來
+當點選Inner，會先 產生Outer Click事件，再產生Inner Click事件如下
+
+<a href="https://imgur.com/jqKP4oh"><img src="https://i.imgur.com/jqKP4oh.gif" title="source: imgur.com" width="400px" /></a>
