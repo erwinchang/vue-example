@@ -14,5 +14,8 @@ export default{
 </script>
 
 <template>
-  <a href="#123" class="btn" @click.prevent="msgShow('hello')">click me!</a>
+  <div class="outer" @click="msgShow('Outer')">
+    <span>Outer</span>
+    <div class="inner" @click="msgShow('Inner')">Inner</div>
+  </div>
 </template>

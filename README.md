@@ -2,12 +2,15 @@
 
 ### 1.5.3 v-on與修飾子
 
-#### .prevent
+#### .capture
 
-防止元件的預設行為(ex. href)
+JS事件流程可以分成兩種機制：
+事件冒泡 (Event Bubbling) : 由內到外
+事件捕獲 (Event Capturing) : 由外到內
 
-##### 會執行連結動作(即tag 123)
 
+範例如下
+若點Inner，會先triggle inner再triggle outer
 ```
 <script>
 export default{
@@ -25,18 +28,11 @@ export default{
 </script>
 
 <template>
-  <a href="#123" class="btn" @click="msgShow('hello')">click me!</a>
-</template>
-```
-<a href="https://imgur.com/EVNdTbV"><img src="https://i.imgur.com/EVNdTbV.gif" title="source: imgur.com" /></a>
-
-
-##### 加入.prevent，不會執行連結動作(即tag 123)
-
-```
-<template>
-  <a href="#123" class="btn" @click.prevent="msgShow('hello')">click me!</a>
+  <div class="outer" @click="msgShow('Outer')">
+    <span>Outer</span>
+    <div class="inner" @click="msgShow('Inner')">Inner</div>
+  </div>
 </template>
 ```
 
-<a href="https://imgur.com/tLvHjx7"><img src="https://i.imgur.com/tLvHjx7.gif" title="source: imgur.com" /></a>
+<a href="https://imgur.com/ytxV18G"><img src="https://i.imgur.com/ytxV18G.gif" title="source: imgur.com" /></a>
