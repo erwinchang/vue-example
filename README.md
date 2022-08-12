@@ -72,3 +72,34 @@ export default{
   <button v-on:click="plus">Plus</button>
 </template>
 ```
+
+### 1.5.2 v-on與event物件
+
+JS會Listener事件物件(EventObject)，裡面包含事件有關的屬性，方法等
+
+```
+<script>
+export default{
+  data(){
+    return {
+      amount: 0,
+      count: 0
+    }
+  },
+  methods:{
+    plus(amount, event){
+      console.log(event.target.tagName)
+      this.count += amount
+    }
+  }
+}
+</script>
+
+<template>
+  <p><input v-model.number="amount" /></p>
+  <p>Count: {{ count }}</p>
+  <button v-on:click="plus(amount,$event)">Plus</button>
+</template>
+```
+
+<a href="https://imgur.com/U0qjixb"><img src="https://i.imgur.com/U0qjixb.gif" title="source: imgur.com" /></a>
