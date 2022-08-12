@@ -1,29 +1,27 @@
 ## CH1.4.4 模板綁定
 
 
-### v-text
+### v-html
 
-原本採用```{{ }}```，來取得變數內容  
-也可以採用v-text方式  
-
-```
-<div v-text="text"></div>
-
-<div> {{ text }} </div>
-```
-
-範例如下  
+v-text會變成HTML字串，不會變成HTML來render
+需採用v-html，變成HTML來render
 
 ```
+<script>
+export default{
+  data(){
+    return {
+      text: '<h1>HELLO</h1>'
+    }
+  }
+}
+</script>
+
 <template>
-  <div v-text="text">World!</div>
-  <br/>
-  <div> {{ text }} World!</div>
+  <div v-text="text"></div>
+  <br />
+  <div v-html="text"></div>
 </template>
 ```
 
-輸出如下  
-**採用v-text方式，只會出現HELLO**  
-
-
-<a href="https://imgur.com/sLy5EMn"><img src="https://i.imgur.com/sLy5EMn.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/tX3Iyeb"><img src="https://i.imgur.com/tX3Iyeb.png" title="source: imgur.com" /></a>
