@@ -44,3 +44,5 @@ export default{
     @keydown.enter="addToMessages(msg)" />
 </template>
 ```
+
+<a href="https://imgur.com/y3jFYrr"><img src="https://i.imgur.com/y3jFYrr.gif" title="source: imgur.com" width="400px" /></a>
