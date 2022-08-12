@@ -1,5 +1,4 @@
 ## CH1.5 事件處理
-
 ### 1.5.3 v-on與修飾子
 
 .stop
@@ -7,7 +6,8 @@
 防止事件冒泡
 
 
-#### 1 未加.stop，內部的click會傳到外部
+
+#### 1 未加.stop，內部的click event會傳到外部
 ```
 <script>
 export default{
@@ -36,6 +36,18 @@ export default{
 <a href="https://imgur.com/HOxJ5BV"><img src="https://i.imgur.com/HOxJ5BV.gif" title="source: imgur.com" /></a>
 
 
+#### 2 加.stop，防止內部的click event會傳到外部
+
+```
+<template>
+  <div class="outer" @click="msgShow('Outer')">
+  <span>Outer</span>
+    <div class="inner" @click.stop="msgShow('Inner')">Inner</div>
+  </div>
+</template>
+```
+
+<a href="https://imgur.com/sU32WXq"><img src="https://i.imgur.com/sU32WXq.gif" title="source: imgur.com" /></a>
 
 ------------
 

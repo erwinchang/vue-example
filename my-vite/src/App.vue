@@ -15,8 +15,8 @@ export default{
 </script>
 
 <template>
-  <div class="outer" v-on:click="msgShow('Outer')">
+  <div class="outer" @click="msgShow('Outer')">
   <span>Outer</span>
-    <div class="inner" v-on:click="msgShow('Inner')">Inner</div>
+    <div class="inner" @click.stop="msgShow('Inner')">Inner</div>
   </div>
 </template>
