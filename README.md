@@ -46,3 +46,17 @@ export default{
 ```
 
 <a href="https://imgur.com/y3jFYrr"><img src="https://i.imgur.com/y3jFYrr.gif" title="source: imgur.com" width="400px" /></a>
+
+### .exact
+
+當按下cltr+enter也會產生keydown.enter
+若加入exact則只有enter產生產生
+
+```
+<template>
+  <input type="text"
+    placeholder="輸入任意文字後按下Enter鍵"
+    v-model.trim="msg"
+    @keydown.enter.exact="addToMessages(msg)" />
+</template>
+```
