@@ -4,13 +4,14 @@
 
 #### .capture
 
-JS事件流程可以分成兩種機制：
-事件冒泡 (Event Bubbling) : 由內到外
-事件捕獲 (Event Capturing) : 由外到內
+JS事件流程可以分成兩種機制：  
+事件冒泡 (Event Bubbling) : 由內到外  
+事件捕獲 (Event Capturing) : 由外到內  
 
 
-範例如下
-若點Inner，會先triggle inner再triggle outer
+範例如下  
+若點Inner，會先triggle inner再triggle outer  
+
 ```
 <script>
 export default{
@@ -38,7 +39,7 @@ export default{
 <a href="https://imgur.com/ytxV18G"><img src="https://i.imgur.com/ytxV18G.gif" title="source: imgur.com" width="400px" /></a>
 
 
-當Outer加入.capture，Click產生順序就會反過來
-當點選Inner，會先 產生Outer Click事件，再產生Inner Click事件如下
+當Outer加入.capture，Click產生順序就會反過來  
+當點選Inner，會先 產生Outer Click事件，再產生Inner Click事件如下  
 
 <a href="https://imgur.com/jqKP4oh"><img src="https://i.imgur.com/jqKP4oh.gif" title="source: imgur.com" width="400px" /></a>
