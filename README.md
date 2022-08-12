@@ -1,62 +1,38 @@
-## CH1.5.4 鍵盤修飾子
+## CH1.6 條件判斷與列表渲染
 
-處理key事件如下(event.key)
+### CH1.6.1 v-if/v-show
+
+v-if : 直接將元素移除，其它(v-else-if,v-else)
+v-show : 設定display為none(即隱藏)
 
 ```
-.enter
-.tab
-.delete (包含delete與backspace鍵)
-.esc
-.space
-.up
-.down
-.left
-.right
-.ctrl
-.alt
-.shift
-.meta (對應該window鍵)
+<div v-if="isShow">v-if</div>
+<div v-show="isShow">v-show</div>
 ```
 
-### enter事件
+通過```<template>```來包覆
 
 ```
 <script>
 export default{
   data(){
     return {
-      msg: '',
-      message: ''
-    }
-  },
-  methods:{
-    addToMessages(text){
-      console.log(text)
+      value: 'B'
     }
   }
 }
 </script>
 
 <template>
-  <input type="text"
-    placeholder="輸入任意文字後按下Enter鍵"
-    v-model.trim="msg"
-    @keydown.enter="addToMessages(msg)" />
-</template>
-```
-
-<a href="https://imgur.com/y3jFYrr"><img src="https://i.imgur.com/y3jFYrr.gif" title="source: imgur.com" width="400px" /></a>
-
-### .exact
-
-當按下cltr+enter也會產生keydown.enter
-若加入exact則只有enter產生產生
-
-```
-<template>
-  <input type="text"
-    placeholder="輸入任意文字後按下Enter鍵"
-    v-model.trim="msg"
-    @keydown.enter.exact="addToMessages(msg)" />
+  <template v-if="value === 'A'">
+    <h1>Title A</h1>
+    <p>Paragrah A -1 </p>
+    <p>Paragrah A -2 </p>
+  </template>
+  <template v-else>
+    <h1>Title B</h1>
+    <p>Paragrah B -1 </p>
+    <p>Paragrah <Btn></Btn> -2 </p>
+  </template>  
 </template>
 ```
