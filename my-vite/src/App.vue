@@ -2,7 +2,11 @@
 export default{
   data(){
     return {
-      arr: ['008', 'JS', 'awesome']
+      book:{
+        title: '008js',
+        author: 'Kuro',
+        publishedAt: '2019/09'
+      }
     }
   }
 }
@@ -10,10 +14,12 @@ export default{
 
 <template>
   <ul>
-    <li v-for="item in arr">{{ item }}</li>
+    <li v-for="val in book">{{ val }}</li>
   </ul>
-
   <ul>
-    <li v-for="(item,index) in arr">{{ index }} / {{ item }}</li>
+    <li v-for="(val,key) in book">{{ key }} / {{ val }}</li>
   </ul>  
+  <ul>
+    <li v-for="(val,key,index) in book">{{ index }} / {{ key }} / {{ val }}</li>
+  </ul>    
 </template>
