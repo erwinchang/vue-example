@@ -2,15 +2,15 @@
 
 ### CH1.6.1 v-if/v-show
 
-v-if : 直接將元素移除，其它(v-else-if,v-else)
-v-show : 設定display為none(即隱藏)
+v-if : 直接將元素移除，其它(v-else-if,v-else)  
+v-show : 設定display為none(即隱藏)  
 
 ```
 <div v-if="isShow">v-if</div>
 <div v-show="isShow">v-show</div>
 ```
 
-通過```<template>```來包覆
+通過```<template>```來包覆  
 
 ```
 <script>
