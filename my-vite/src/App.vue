@@ -2,14 +2,14 @@
 export default{
   data(){
     return {
-      text: '<h1>HELLO</h1>'
+      text: 'HELLO'
     }
   }
 }
 </script>
 
 <template>
-  <div v-text="text"></div>
-  <br />
-  <div v-html="text"></div>
+  <input v-model="text" />
+  <div> {{ text }}</div>
+  <div v-once> {{ text }}</div>
 </template>
