@@ -4,6 +4,18 @@ export default{
     return {
       message: ''
     }
+  },
+  computed:{
+    isVaild: function() {
+      return this.message.length <= 5
+    },
+    msgStyle: function() {
+      console.log(this.message.length)
+      return {
+        'border': this.isVaild ? '' : 'red solid 1px',
+        'color' : this.isVaild ? '' : 'red'
+      }
+    }
   }
 }
 </script>
@@ -12,12 +24,6 @@ export default{
   <input 
     type="text" 
     v-model.trim="message"
-    v-bind:class="{ 'error': message.length > 5 }"/>
+    placeholder="請勿超過5字"
+    v-bind:style="msgStyle" />
 </template>
-
-<style>
-.error {
-  border: red sold 1px;
-  color: red;
-}
-</style>
