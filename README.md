@@ -1,38 +1,46 @@
-## CH1.5 事件處理
+## CH1.5.4 鍵盤修飾子
 
-#### .self
-
-只會觸發元素自已事件行為
-
-範例如下  
-當自已物件(modal-container)上面還有一層物件(modal-body)  
-在物件(modal-container)及物件(modal-body)上面按下Click都會產生 物件(modal-container)的Click事件如下  
-why? 因為click會往外產生，因此點在物件(modal-body)也會產生物件(modal-container)的click
-
-<a href="https://imgur.com/kE8XC25"><img src="https://i.imgur.com/kE8XC25.gif" title="source: imgur.com" width="400px" /></a>
- 
-此時若在物件(modal-container)，只有點選在自已物件上面才會產生事件 
-需加入.self如下
+處理key事件如下(event.key)
 
 ```
+.enter
+.tab
+.delete (包含delete與backspace鍵)
+.esc
+.space
+.up
+.down
+.left
+.right
+.ctrl
+.alt
+.shift
+.meta (對應該window鍵)
+```
+
+### enter事件
+
+```
+<script>
+export default{
+  data(){
+    return {
+      msg: '',
+      message: ''
+    }
+  },
+  methods:{
+    addToMessages(text){
+      console.log(text)
+    }
+  }
+}
+</script>
+
 <template>
-  <div class="modal-mask" v-bind:style="modalStyle">
-    <div class="modal-container" @click.self="isShow = false">
-      <div class="modal-body">Hello!</div>
-    </div>
-  </div>
-  <button @click="isShow = true">Click Me</button>
+  <input type="text"
+    placeholder="輸入任意文字後按下Enter鍵"
+    v-model.trim="msg"
+    @keydown.enter="addToMessages(msg)" />
 </template>
-``` 
-
-<a href="https://imgur.com/f0lHxBf"><img src="https://i.imgur.com/f0lHxBf.gif" title="source: imgur.com" width="400px" /></a>
-
-
-其它說明   
-[How To use CSS Display All Property Example one by one][3]    
-設定display為none表示不顯示  
-
-
-[1]:https://ithelp.ithome.com.tw/articles/10198999
-[2]:https://book.vue.tw/CH1/1-5-events.html
-[3]:https://www.myprograming.com/how-to-use-css-display-all-property-example-one-by-one/
+```

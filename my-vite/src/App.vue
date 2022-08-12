@@ -2,51 +2,21 @@
 export default{
   data(){
     return {
-      isShow: false
+      msg: '',
+      message: ''
     }
   },
-  computed: {
-    modalStyle() {
-      return {
-        'display': this.isShow ? '' : 'none'
-      }
+  methods:{
+    addToMessages(text){
+      console.log(text)
     }
   }
 }
 </script>
 
 <template>
-  <div class="modal-mask" v-bind:style="modalStyle">
-    <div class="modal-container" @click.self="isShow = false">
-      <div class="modal-body">Hello!</div>
-    </div>
-  </div>
-  <button @click="isShow = true">Click Me</button>
+  <input type="text"
+    placeholder="輸入任意文字後按下Enter鍵"
+    v-model.trim="msg"
+    @keydown.enter="addToMessages(msg)" />
 </template>
-
-<style scoped>
-.modal-mask {
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: table;
-  background-color: rgba(0, 0, 0, .5);
-  transition: opacity .3s ease;
-}
-.modal-container {
-  cursor: pointer;
-  display: table-cell;
-  vertical-align: middle;
-}
-.modal-body {
-  cursor: auto;
-  display: block;
-  width: 50%;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: #fff;
-}
-</style>
