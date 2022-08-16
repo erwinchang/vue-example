@@ -1,5 +1,11 @@
 ## CH1.6 條件判斷與列表渲染
 
+1. v-for與陣列
+2. v-for與物件
+3. v-for與數字範圍
+4. v-for與template
+5. vo-for與列表Sort
+
 ### CH1.6.2 v-for
 
 
@@ -58,3 +64,31 @@ export default{
 ```
 
 <a href="https://imgur.com/5qjiy9u"><img src="https://i.imgur.com/5qjiy9u.png" title="source: imgur.com" /></a>
+
+------------
+
+### CH1.6.2 v-for與數字範圍
+
+```
+  <ul>
+    <li class="page-item" v-for="page in 10">
+      <a class="page-link" href>{{ page }}</a>
+    </li>
+  </ul>
+```
+
+測試如下
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
+
+### CH1.6.2 v-for與<template>

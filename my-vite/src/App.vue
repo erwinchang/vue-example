@@ -22,4 +22,9 @@ export default{
   <ul>
     <li v-for="(val,key,index) in book">{{ index }} / {{ key }} / {{ val }}</li>
   </ul>    
+  <ul>
+    <li class="page-item" v-for="page in 10">
+      <a class="page-link" href>{{ page }}</a>
+    </li>
+  </ul>
 </template>
