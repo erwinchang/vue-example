@@ -2,49 +2,47 @@
 export default{
   data(){
     return {
-      book:{
-        title: '008js',
-        author: 'Kuro',
-        publishedAt: '2019/09'
-      },
-      numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      lists: [
+        {
+          id: 'task01',
+          title: '選項1',
+          isDone: false
+        },
+        {
+          id: 'task02',
+          title: '選項2',
+          isDone: false
+        },
+        {
+          id: 'task03',
+          title: '選項3',
+          isDone: true
+        }
+      ]
     }
   },
   computed:{
-    evenNumbers () {
-      return this.numbers.filter(number => number % 2 === 0)
+    todoLists(){
+      return this.lists.filter( d => !d.isDone)
     },
-    sortedNumbers(){
-      //注意sort會改變this.number的順序，改用copy方式(即...this.number)
-      return [...this.numbers].sort((a,b) => b -a )
-    },
-    myNumbers(){
-      return this.numbers
+    doneLists(){
+      return this.lists.filter( d => d.isDone)
     }
   }
 }
 </script>
 
 <template>
+  <h1>toDo</h1>
   <ul>
-    <li v-for="val in book">{{ val }}</li>
-  </ul>
-  <ul>
-    <li v-for="(val,key) in book">{{ key }} / {{ val }}</li>
-  </ul>  
-  <ul>
-    <li v-for="(val,key,index) in book">{{ index }} / {{ key }} / {{ val }}</li>
-  </ul>    
-  <ul>
-    <li class="page-item" v-for="page in 10">
-      <a class="page-link" href>{{ page }}</a>
+    <li v-for="i in todoLists" :key="i.id">
+        <label><input v-model="i.isDone" type="checkbox"> {{ i.title }} </label>
     </li>
   </ul>
-  <div class="block" v-for="i in evenNumbers">
-    {{ i }}
-  </div>
+  <h1>Done</h1>
   <ul>
-    <li>number: {{ myNumbers }}</li>
-    <li>{{ sortedNumbers }}</li>
-  </ul>
+    <li v-for="i in doneLists" :key="i.id">
+        <label><input v-model="i.isDone" type="checkbox"> {{ i.title }} </label>
+    </li>
+  </ul>  
 </template>
